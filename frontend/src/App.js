@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+import AdminDashboard from "./pages/AdminDashboard";
+import ManageServices from "./pages/ManageServices";
+import ManageStylists from './pages/ManageStylists';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import FullServices from './pages/FullServices';
+import ProtectedRoute from "./components/ProtectedRoute"; // Ensure this file exists
+import "./styles.css"; // Ensure this file exists
+import Dashboard from "./pages/Dashboard";
+import ServiceDetailsPage from "./pages/ServiceDetailsPage";
+import PaymentSuccessPage from "./pages/PaymentSuccessPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <Navbar />
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/dashboard/services" element={<FullServices/>} />
+          <Route path="/dashboard/services/:id" element={<ServiceDetailsPage/>} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/manageservices" element={<ManageServices />} />
+          <Route path="/admin/managestylists" element={<ManageStylists/>} />
+          <Route path="/payment-success" element={<PaymentSuccessPage />} />
+        <Route path="/payment-failed" element={<div>Payment Failed</div>} />
+        </Routes>
+      </div>
+      <Footer />
     </div>
   );
 }

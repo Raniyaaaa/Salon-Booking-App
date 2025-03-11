@@ -1,18 +1,33 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../redux/slices/authSlice";
+import "../styles.css";
 
-function Navbar() {
+const Navbar = () => {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
   return (
-    <nav className="bg-blue-600 p-4 text-white">
-      <div className="container mx-auto flex justify-between">
-        <Link to="/" className="text-lg font-bold">Salon Booking</Link>
-        <div className="space-x-4">
-          <Link to="/services">Services</Link>
-          <Link to="/booking">Book Appointment</Link>
+    <nav>
+      <h2>Salon Booking</h2>
+      <Link to="/">Home</Link>
+      {user ? (
+        <>
+          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/dashboard/services">Services</Link>
+          <Link to="/profile">Profile</Link>
+          <button onClick={() => dispatch(logoutUser())}>Logout</button>
+        </>
+      ) : (
+        <>
           <Link to="/login">Login</Link>
-        </div>
-      </div>
+          <Link to="/register">Register</Link>
+        </>
+      )}
+      
     </nav>
   );
-}
+};
 
 export default Navbar;

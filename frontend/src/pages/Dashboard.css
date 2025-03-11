@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+
+.main-heading {
+    font-family: 'Playfair Display', serif; /* Elegant and modest */
+    font-size: 6rem; /* Adjust size */
+    font-weight: 600; /* Slightly bold but not too heavy */
+    color: #664d65; /* Main text color */
+    text-align: center; /* Center the text */
+    
+    /* Perfect Shadow */
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Hero Section */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 80%;
+    margin: auto;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(174, 130, 176, 0.4);
+  }
+  
+  /* Hero Content */
+  .hero-content {
+
+    padding: 20px;
+    color: white; /* Ensures text visibility */
+    text-align: center;
+    border-radius: 10px; /* Adds smooth corners */
+    max-width: 80%;
+    
+  }
+  
+  
+  .book-btn {
+    background: #c1c5c3;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .book-btn:hover {
+    background: #d4d9d6;
+  }
+  
+  /* Services Section */
+  .services {
+    padding: 50px;
+  }
+  
+  .about-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    align-items: center;
+    justify-content: space-between;
+    max-width: 80%;
+    margin: auto;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(174, 130, 176, 0.4);
+  }
+  
+  .about-text {
+    flex: 1;
+    padding-left: 20px;
+  }
+  
+  .about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .about-image img {
+    width: 100%;
+    height: 500px;
+    max-width: 400px;
+    border-radius: 10px;
+  }
+  
+  /* Stylists Section */
+  .stylists {
+    padding: 50px;
+  }
+  
+  .stylist-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .stylist-card {
+    text-align: center;
+  }
+  
+  .stylist-card img {
+    width: 100px;
+    border-radius: 50%;
+  }
+  
+  /* Testimonials */
+  .testimonials {
+    padding: 50px;
+    background: #111;
+  }
+  .category-list {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+    overflow-x: auto; /* ✅ Scroll only when needed */
+    white-space: nowrap; /* ✅ Prevent wrapping */
+    scroll-behavior: smooth; /* ✅ Smooth scrolling */
+
+    /* ✅ Ensures the list stays centered */
+    justify-content: flex-start;
+}
+
+/* ✅ Keeps list centered while allowing scrolling */
+.category-list-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden; /* Prevents horizontal overflow */
+}
+
+/* ✅ Hide scrollbar by default */
+.category-list::-webkit-scrollbar {
+    height: 8px;
+    display: none;
+}
+
+/* ✅ Show scrollbar when hovering */
+.category-list:hover::-webkit-scrollbar {
+    display: block;
+}
+
+/* ✅ Nice scrollbar styling */
+.category-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.category-list::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+
+/* ✅ Prevent category buttons from shrinking */
+.category-button {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-button:hover {
+    background: #bbb;
+}
+
+.category-button.active {
+  background: #888;
+  color: white;
+  font-weight: bold;
+}
+
+.show-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.show-more-btn {
+  background-color: #888;
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.show-more-btn:hover {
+  background-color: #555;
+}
+
+/* 📌 Table Container */
+.table-container {
+  display: flex;
+  justify-content: center; /* ✅ Centers table horizontally */
+  align-items: center; /* ✅ Centers table vertically (if needed) */
+  width: 100%;
+  padding: 20px 0;
+}
+
+/* 📌 Table Styling */
+table {
+  width: 70%;
+  border-collapse: collapse;
+  table-layout: fixed; /* ✅ Fix column widths */
+  margin: auto; /* ✅ Ensures table stays centered */
+}
+
+/* 📌 Table Header Styling */
+th {
+  color: #555;
+  border-bottom: 1px solid #444;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+}
+
+/* 📌 Table Row Styling */
+td {
+  padding: 12px;
+  text-align: center; /* ✅ Center content */
+  border-bottom: 1px solid #444;
+  white-space: nowrap; /* ✅ Prevents wrapping */
+  overflow: hidden; /* ✅ Hides overflowing text */
+  text-overflow: ellipsis; /* ✅ Adds "..." if text is too long */
+}
+
+/* 📌 Ensure fixed width for specific columns */
+th:nth-child(1),
+td:nth-child(1) {
+  width: 40%; /* ✅ Service Name */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 20%; /* ✅ Price */
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 20%; /* ✅ Action */
+}
+
+/* 📌 Responsive Table for Smaller Screens */
+@media (max-width: 768px) {
+  .table-container {
+    padding: 10px; /* ✅ Adjust padding */
+  }
+
+  table {
+    width: 95%; /* ✅ More flexible for small screens */
+  }
+
+  th, td {
+    padding: 8px;
+    font-size: 14px;
+  }
+}

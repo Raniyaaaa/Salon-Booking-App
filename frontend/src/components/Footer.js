@@ -1,10 +1,16 @@
-function Footer() {
-    return (
-      <footer className="bg-gray-800 text-white text-center p-4 mt-auto">
-        © 2025 Salon Booking System. All Rights Reserved.
-      </footer>
-    );
-  }
-  
-  export default Footer;
-  
+import React from "react";
+import "../styles.css"; // Import the CSS file
+
+const Footer = () => {
+  return (
+    <footer className="footer">
+      <p>&copy; {new Date().getFullYear()} Salon Booking. All Rights Reserved.</p>
+      <div className="footer-links">
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
