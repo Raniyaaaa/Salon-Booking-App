@@ -1,6 +1,6 @@
 const { Stylist }  = require("../models");
 
-// ✅ Get all stylists
+
 exports.getStylists = async (req, res) => {
   try {
     const stylists = await Stylist.findAll();
@@ -10,7 +10,7 @@ exports.getStylists = async (req, res) => {
   }
 };
 
-// ✅ Add a new stylist
+
 exports.addStylist = async (req, res) => {
   try {
     const { name, specialization, imageUrl, availability, assignedService } = req.body;
@@ -32,7 +32,7 @@ exports.addStylist = async (req, res) => {
   }
 };
 
-// ✅ Update a stylist (e.g., name, specialization, availability, image)
+
 exports.updateStylist = async (req, res) => {
   try {
     const { id } = req.params;
@@ -54,12 +54,11 @@ exports.updateStylist = async (req, res) => {
 
     res.status(200).json(stylist);
   } catch (error) {
-    console.error("Error updating stylist:", error); // Log for debugging
+    console.error("Error updating stylist:", error); 
     res.status(500).json({ message: "Failed to update stylist", error: error.message });
   }
 };
 
-// ✅ Delete a stylist
 exports.deleteStylist = async (req, res) => {
   try {
     const { id } = req.params;

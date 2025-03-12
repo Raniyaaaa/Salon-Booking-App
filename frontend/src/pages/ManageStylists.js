@@ -7,7 +7,7 @@ import {
   deleteStylist,
 } from "../redux/slices/stylistSlice";
 import { fetchServices } from "../redux/slices/serviceSlice";
-import "./ManageStylists.css"; // Import CSS file
+import "./ManageStylists.css";
 
 const ManageStylists = () => {
   const dispatch = useDispatch();
@@ -68,7 +68,6 @@ const ManageStylists = () => {
     <div className="container">
       <h2 className="title">Manage Stylists</h2>
 
-      {/* Add/Edit Stylist Form */}
       <div className="form-container">
         <input
           type="text"
@@ -110,11 +109,10 @@ const ManageStylists = () => {
         </button>
       </div>
 
-      {/* Error & Loading States */}
       {loading && <p className="loading">Loading stylists...</p>}
       {error && <p className="error">{error}</p>}
 
-      {/* List of Stylists */}
+
       <div className="stylist-grid">
         {stylists.length === 0 ? (
           <p>No stylists available.</p>
@@ -129,7 +127,6 @@ const ManageStylists = () => {
                 className="stylist-image"
               />
 
-              {/* Availability Toggle */}
               <p>
                 Availability:
                 <button
@@ -140,7 +137,6 @@ const ManageStylists = () => {
                 </button>
               </p>
 
-              {/* Edit & Delete Buttons */}
               <div className="button-group">
                 <button onClick={() => handleEditStylist(stylist)} className="edit-button">
                   Edit

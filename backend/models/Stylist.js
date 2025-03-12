@@ -18,7 +18,7 @@ const Stylist = sequelize.define(
       allowNull: true,
     },
     specialization: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: true,
     },
     availability: {

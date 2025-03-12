@@ -1,15 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
 html, body {
   height: 100%;
   width: 100%;
+  font-family: 'Merriweather', serif;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
   background: #fefefe url('https://i.pinimg.com/736x/3f/6b/60/3f6b60be2a7099aef36962eaf7f4accb.jpg') no-repeat fixed center;
-  background-size: 100% auto; /* Ensures full image visibility */
-  background-color: #fefefe; /* Adds a fallback color */
+  background-size: 100% auto;
+  background-color: #fefefe;
 }
 
-/* Layout Structure */
 .app-container {
   min-height: 100vh;
   display: flex;
@@ -21,7 +21,6 @@ html, body {
   padding: 20px;
 }
 
-/* Navbar */
 nav {
   display: flex;
   justify-content: space-between;
@@ -53,11 +52,11 @@ nav a:hover {
 nav button, .button, .category-button, .service-button {
   background: #6D4C91;
   color: white;
+  font-family: 'Merriweather', serif;
   border: none;
   padding: 8px 15px;
   cursor: pointer;
   border-radius: 6px;
-  font-weight: bold;
   transition: background 0.3s, transform 0.2s;
   box-shadow: 0 2px 5px rgba(109, 76, 145, 0.15);
 }
@@ -67,7 +66,6 @@ nav button:hover, .button:hover, .category-button:hover, .service-button:hover {
   transform: translateY(-2px);
 }
 
-/* Footer */
 .footer {
   background-color: #6D4C91;
   color: #E5D3FA;
@@ -106,21 +104,18 @@ h2 {
   display: flex;
   justify-content: center;
   width: 100%;
-  overflow: hidden; /* Prevents horizontal overflow */
+  overflow: hidden;
 }
 
-/* ✅ Hide scrollbar by default */
 .category-list::-webkit-scrollbar {
   height: 8px;
   display: none;
 }
 
-/* ✅ Show scrollbar when hovering */
 .category-list:hover::-webkit-scrollbar {
   display: block;
 }
 
-/* ✅ Nice scrollbar styling */
 .category-list::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 10px;
@@ -130,8 +125,6 @@ h2 {
   background-color: #555;
 }
 
-
-/* ✅ Prevent category buttons from shrinking */
 .category-button {
   flex-shrink: 0;
   padding: 8px 16px;
@@ -152,8 +145,6 @@ background: #888;
 color: white;
 font-weight: bold;
 }
-
-/* Manage Services */
 .manage-services {
   max-width: 80%;
   margin: 40px auto;
@@ -161,16 +152,14 @@ font-weight: bold;
   
 }
 
-/* Service List */
 .service-list {
   margin-top: 20px;
   text-align: center;
 }
 
-/* Service Grid */
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Exactly two items per row */
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 0;
   list-style: none;
@@ -179,7 +168,6 @@ font-weight: bold;
   justify-content: center;
 }
 
-/* Service Item */
 .service-item {
   display: flex;
   align-items: center;
@@ -252,13 +240,11 @@ font-weight: bold;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Form Group */
 .form-group {
   display: flex;
   flex-direction: column;
 }
 
-/* Label */
 .label {
   font-size: 14px;
   font-weight: 600;
@@ -266,7 +252,6 @@ font-weight: bold;
   margin-bottom: 5px;
 }
 
-/* Input & Textarea */
 .input {
   padding: 10px;
   border: 1px solid #ddd;
@@ -281,7 +266,7 @@ font-weight: bold;
   box-shadow: 0 0 5px rgba(109, 76, 145, 0.2);
 }
 
-/* Button Styles */
+
 .button {
   background: #6D4C91;
   color: white;
@@ -310,6 +295,93 @@ font-weight: bold;
 }
 
 
+.profile-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background: rgba(144, 131, 145, 0.4);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.profile-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #4a3f35;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.profile-info p {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+.edit-profile-btn {
+  background: #6b705c;
+  font-family: 'Merriweather', serif;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease-in-out;
+  font-size: 1rem;
+}
+
+.edit-profile-btn:hover {
+  background: #a5a58d;
+}
+
+
+.appointment-title {
+  font-size: 2rem;
+  margin-top: 30px;
+  color: #3d3d3d;
+}
+
+.no-appointments {
+  font-size: 1.2rem;
+  color: #777;
+}
+
+
+.appointments-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.appointments-table th, .appointments-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.appointments-table th {
+  font-weight: bold;
+  background: #e8e6e3;
+  color: #3d3d3d;
+}
+
+.cancel-btn {
+  background: #c0392b;
+  color: white;
+  border: none;
+  font-family: 'Merriweather', serif;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background 0.3s ease-in-out;
+}
+
+.cancel-btn:hover {
+  background: #e74c3c;
+}
+
+
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -325,7 +397,7 @@ font-weight: bold;
   }
 
   .service-grid {
-    grid-template-columns: repeat(1, 1fr); /* Single column on smaller screens */
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .service-item {
@@ -342,4 +414,22 @@ font-weight: bold;
   .service-actions {
     flex-wrap: wrap;
   }
+
+  .profile-container {
+    width: 90%;
+    padding: 20px;
+}
+
+.profile-title {
+    font-size: 2rem;
+}
+
+.appointments-table {
+    font-size: 0.9rem;
+}
+
+.cancel-btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+}
 }

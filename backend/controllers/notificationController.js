@@ -1,5 +1,5 @@
 const { sendEmail } = require('../cron/sendEmail');
-// const { sendSMS } = require('../cron/sendSMS');  // Assuming you have a function for sending SMS
+
 const { Booking }  = require("../models");
 
 exports.sendAppointmentReminder = async (req, res) => {
@@ -13,9 +13,7 @@ exports.sendAppointmentReminder = async (req, res) => {
 
     const message = `Reminder: Your appointment for ${booking.Service.name} with ${booking.Stylist.name} is scheduled at ${booking.time}`;
 
-    // Send Email and SMS reminders
     sendEmail(booking.User.email, 'Appointment Reminder', message);
-    // sendSMS(booking.User.phoneNumber, message); // Assuming User has phoneNumber
 
     res.status(200).json({ message: 'Reminder sent successfully' });
   } catch (error) {

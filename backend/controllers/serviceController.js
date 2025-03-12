@@ -1,6 +1,5 @@
 const { Service }  = require("../models");
 
-// Get all services
 exports.getAllServices = async (req, res) => {
   try {
     const services = await Service.findAll();
@@ -11,7 +10,6 @@ exports.getAllServices = async (req, res) => {
   }
 };
 
-// Add a new service
 exports.addService = async (req, res) => {
   const { name, description, price, duration, imageUrl, category } = req.body;
   console.log("HJGKHH", req.body)
@@ -22,7 +20,7 @@ exports.addService = async (req, res) => {
       price,
       duration,
       imageUrl, 
-      category,  // Store category in database
+      category,
     });
     res.status(201).json(newService);
   } catch (error) {
@@ -31,7 +29,6 @@ exports.addService = async (req, res) => {
   }
 };
 
-// Update an existing service
 exports.updateService = async (req, res) => {
   const { id } = req.params;
   const { name, description, price, duration, imageUrl, category } = req.body;
@@ -43,7 +40,7 @@ exports.updateService = async (req, res) => {
       service.price = price;
       service.duration = duration;
       service.imageUrl = imageUrl;
-      service.category = category; // Update category
+      service.category = category;
       await service.save();
       res.json(service);
     } else {
@@ -55,8 +52,6 @@ exports.updateService = async (req, res) => {
   }
 };
 
-
-// Delete a service
 exports.deleteService = async (req, res) => {
   const { id } = req.params;
   try {

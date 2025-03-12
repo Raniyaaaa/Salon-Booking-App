@@ -12,7 +12,7 @@ const ServiceDetailsPage = () => {
   const dispatch = useDispatch();
   const { services } = useSelector((state) => state.services);
   const { stylists } = useSelector((state) => state.stylists);
-  const URL = "http://localhost:8000"; // Adjust to your backend URL
+  const URL = "http://localhost:8000";
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedStylist, setSelectedStylist] = useState(null);
@@ -34,7 +34,6 @@ const ServiceDetailsPage = () => {
 
   const isBookingFull = availableStylists.every((stylist) => !stylist.availability);
 
-  // Handle stylist selection
   const handleStylistSelection = (stylistId) => {
     setSelectedStylist(stylistId);
     setSelectedDate("");
@@ -43,7 +42,6 @@ const ServiceDetailsPage = () => {
     setBookedSlots([]);
   };
 
-  // Handle date change
   const handleDateChange = (date) => {
     setSelectedDate(date);
     if (selectedStylist) {
@@ -51,7 +49,6 @@ const ServiceDetailsPage = () => {
     }
   };
 
-  // Fetch booked slots from the backend
   const fetchBookedSlots = async (stylistId, date) => {
     try {
       const response = await fetch(`${URL}/stylistslot/${stylistId}/slots?date=${date}`);
@@ -68,26 +65,22 @@ const ServiceDetailsPage = () => {
     }
   };
 
-  // Generate all available time slots (from 10 AM to 7:45 PM with 15 min intervals)
   const generateTimeSlots = (serviceDuration, bookedSlots) => {
     const slots = [];
-    const startTime = new Date().setHours(10, 0, 0, 0); // 10:00 AM
-    const endTime = new Date().setHours(19, 45, 0, 0); // 7:45 PM
-    const interval = 15 * 60 * 1000; // 15-minute intervals
-    const totalSlotsNeeded = Math.ceil(serviceDuration / 15); // How many slots are needed
+    const startTime = new Date().setHours(10, 0, 0, 0);
+    const endTime = new Date().setHours(19, 45, 0, 0);
+    const interval = 15 * 60 * 1000;
+    const totalSlotsNeeded = Math.ceil(serviceDuration / 15);
 
     console.log("Booked Slots:", bookedSlots);
 
     let currentTime = startTime;
 
-    // Generate time slots within working hours (HH:MM format)
     while (currentTime <= endTime) {
         const timeString = new Date(currentTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false }); // 24-hour format
         slots.push(timeString);
         currentTime += interval;
     }
-
-    // Function to check if a given start time can fit the full service duration
     const canFitService = (index) => {
         for (let i = 0; i < totalSlotsNeeded; i++) {
             if (!slots[index + i] || bookedSlots.includes(slots[index + i])) {
@@ -97,15 +90,12 @@ const ServiceDetailsPage = () => {
         return true;
     };
 
-    // Filter slots to only include valid start times
     const availableSlots = slots.filter((_, index) => canFitService(index));
 
     console.log("Available Slots:", availableSlots);
     return availableSlots;
 };
 
-  
-  // Handle time slot selection
   const handleTimeSelection = (time) => {
     setSelectedTime(time);
   };
@@ -113,7 +103,6 @@ const ServiceDetailsPage = () => {
   const handlePayment = async () => {
     setLoading(true);
 
-    // Ensure a stylist, date, and time are selected before proceeding
     if (!selectedStylist || !selectedDate || !selectedTime) {
       alert("Please select a stylist, date, and time.");
       setLoading(false);
@@ -125,12 +114,12 @@ const ServiceDetailsPage = () => {
         const paymentData = {
             serviceId: service.id,
             stylistId: selectedStylist,
-            userId: 1, // Replace with actual logged-in user ID
+            userId: 1,
             date: selectedDate,
             time: selectedTime,
             amount: service.price,
-            customerEmail: "test@example.com", // Replace with actual user email
-            customerPhone: "9876543210" // Replace with actual user phone
+            customerEmail: "test@example.com",
+            customerPhone: "9876543210"
         };
 
         const response = await fetch(`${URL}/payment/create-payment`, {
@@ -169,7 +158,6 @@ const pollPaymentStatus = async (orderId, attempt = 1) => {
         const response = await fetch(`${URL}/payment/verify-payment`, {
             method: "POST",
             headers: {
-                // Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ orderId }),

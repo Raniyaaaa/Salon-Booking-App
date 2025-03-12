@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { bookAppointment } = require('../controllers/bookingController');
+const { getUserAppointments, cancelAppointment } = require('../controllers/bookingController');
+const authMiddleware = require("../middleware/authMiddleware");
 
-// Route to book an appointment
-router.post('/', bookAppointment);
 
+router.get("/mybookings", authMiddleware, getUserAppointments);
+router.delete("/:id", cancelAppointment);
 module.exports = router;

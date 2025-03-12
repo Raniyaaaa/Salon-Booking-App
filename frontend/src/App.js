@@ -9,8 +9,8 @@ import ManageStylists from './pages/ManageStylists';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FullServices from './pages/FullServices';
-import ProtectedRoute from "./components/ProtectedRoute"; // Ensure this file exists
-import "./styles.css"; // Ensure this file exists
+import ProtectedRoute from "./components/ProtectedRoute";
+import "./styles.css";
 import Dashboard from "./pages/Dashboard";
 import ServiceDetailsPage from "./pages/ServiceDetailsPage";
 import PaymentSuccessPage from "./pages/PaymentSuccessPage";

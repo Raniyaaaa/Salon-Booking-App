@@ -9,10 +9,10 @@ const AdminDashboard = () => {
     <div className="admin-container">
       <h2 className="admin-title">Admin Dashboard</h2>
       <div className="admin-controls">
-        <button className="btn btn-primary">Manage Users</button>
-        <button className="btn btn-secondary">Manage Appointments</button>
-        <button className="btn btn-secondary" onClick={() => navigate('/admin/manageservices')}>Manage Service</button>
-        <button className="btn btn-secondary" onClick={() => navigate('/admin/managestylists')}>Manage Stylists</button>
+        <button className="button">Manage Users</button>{" "}
+        <button className="button">Manage Appointments</button>{" "}
+        <button className="button" onClick={() => navigate('/admin/manageservices')}>Manage Service</button>{" "}
+        <button className="button" onClick={() => navigate('/admin/managestylists')}>Manage Stylists</button>
       </div>
     </div>
   );

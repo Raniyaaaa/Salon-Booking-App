@@ -5,13 +5,15 @@ import {
   fetchServices,
   filterByCategory,
 } from "../redux/slices/serviceSlice";
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
   const dispatch = useDispatch();
   const { filteredServices, categories } = useSelector((state) => state.services);
 
-  const [showAll, setShowAll] = useState(false); // ✅ State to toggle services list
-  const [activeCategory, setActiveCategory] = useState("All"); // ✅ Track active category
+  const [showAll, setShowAll] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("All");
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchServices());
@@ -19,16 +21,20 @@ const Services = () => {
 
   const handleCategoryClick = (category) => {
     dispatch(filterByCategory(category));
-    setActiveCategory(category); // ✅ Update active category
+    setActiveCategory(category);
   };
 
-  const visibleServices = showAll ? filteredServices : filteredServices.slice(0, 8); // ✅ Show only 8 initially
+  const handleBookService = (service) => {
+    console.log(`Booking service: ${service.name}`);
+    navigate(`/dashboard/services/${service.id}`);
+  };
+
+  const visibleServices = showAll ? filteredServices : filteredServices.slice(0, 8);
 
   return (
     <div className="services">
       <h2>Our Services</h2>
 
-      {/* Category Filter */}
       <div className='category-list-wrapper'>
         <div className="category-list">
           <button 
@@ -65,7 +71,7 @@ const Services = () => {
                   <td>{service.name}</td>
                   <td>Rs.{service.price}</td>
                   <td>
-                    <button className="book-btn">Book Now</button>
+                    <button className="book-btn" onClick={()=> handleBookService(service)}>Book Now</button>
                   </td>
                 </tr>
               ))
@@ -78,7 +84,6 @@ const Services = () => {
         </table>
       </div>
 
-      {/* Show More / Show Less Button */}
       {filteredServices.length > 8 && (
         <div className="show-more-container">
           <button className="show-more-btn" onClick={() => setShowAll(!showAll)}>

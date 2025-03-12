@@ -7,7 +7,7 @@ const storedUser = JSON.parse(localStorage.getItem("user"));
 const authSlice = createSlice({
   name: "auth",
   initialState: { 
-    user: storedUser || null,  // Retrieve user from localStorage if present
+    user: storedUser || null,
     token: localStorage.getItem("token") || null, 
     loading: false, 
     error: null 
@@ -18,8 +18,8 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.error = null;
-      localStorage.setItem("user", JSON.stringify(action.payload.user)); // Save user to localStorage
-      localStorage.setItem("token", action.payload.token); // Save token to localStorage
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      localStorage.setItem("token", action.payload.token);
     },
     clearUser: (state) => {
       state.user = null;
@@ -40,22 +40,20 @@ const authSlice = createSlice({
 export const { setUser, clearUser, setLoading, setError } = authSlice.actions;
 export default authSlice.reducer;
 
-// Async functions with dispatch
 export const registerUser = (userData) => async (dispatch) => {
     try {
-      // Dispatch loading action before making the request
+
       dispatch(setLoading(true));
-  
-      // Make the API call to register the user
+
       const response = await axios.post(`${API_URL}/register`, userData);
       return (response);
     } catch (error) {
-      // Handle error response, check for response or other errors
+
       const errorMessage = error.response?.data?.message || error.message || "Registration failed";
       dispatch(setError(errorMessage));
       
     } finally {
-      // Stop the loading spinner after the request finishes
+
       dispatch(setLoading(false));
     }
   };

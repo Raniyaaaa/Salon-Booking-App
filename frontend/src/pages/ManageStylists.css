@@ -1,11 +1,8 @@
-/* Container */
 .container {
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
   }
-  
-  /* Title */
   .title {
     text-align: center;
     font-size: 24px;
@@ -14,7 +11,7 @@
     margin-bottom: 20px;
   }
   
-  /* Form Container */
+
   .form-container {
     display: flex;
     flex-direction: column;
@@ -24,8 +21,7 @@
     border-radius: 8px;
     background: #f9f9f9;
   }
-  
-  /* Input Fields */
+
   .input-field {
     padding: 10px;
     border: 1px solid #ccc;
@@ -58,7 +54,6 @@
     margin-right: 5px;
   }
   
-  /* Buttons */
   .primary-button {
     background: #6D4C91;
     color: white;
@@ -74,8 +69,7 @@
     background: #A97CB0;
     transform: translateY(-2px);
   }
-  
-  /* Loading & Error Messages */
+ 
   .loading, .error {
     text-align: center;
     font-weight: bold;
@@ -86,8 +80,7 @@
   .error {
     color: rgb(84, 24, 24);
   }
-  
-  /* Stylist Grid */
+
   .stylist-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -95,9 +88,9 @@
     margin-top: 20px;
   }
   
-  /* Stylist Card */
+
   .stylist-card {
-    background: white;
+    background: rgba(183, 162, 184, 0.4);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -110,7 +103,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
   
-  /* Stylist Image */
   .stylist-image {
     width: 100px;
     height: 100px;
@@ -119,8 +111,7 @@
     margin-top: 10px;
     border: 3px solid #6D4C91;
   }
-  
-  /* Availability Button */
+
   .availability-button {
     margin-left: 10px;
     padding: 5px 10px;
@@ -140,7 +131,6 @@
     color: white;
   }
   
-  /* Button Group */
   .button-group {
     display: flex;
     justify-content: center;
@@ -178,7 +168,6 @@
     background: white;
   }
   
-  /* Responsive Design */
   @media (max-width: 600px) {
     .container {
       width: 90%;

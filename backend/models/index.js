@@ -7,7 +7,7 @@ const Booking = require("./Booking");
 const StylistSlot = require("./StylistSlot");
 const Review = require("./Review");
 
-// Define relationships
+
 User.hasMany(Booking, { foreignKey: "userId", as: "bookings", onDelete: "CASCADE" });
 Booking.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
 

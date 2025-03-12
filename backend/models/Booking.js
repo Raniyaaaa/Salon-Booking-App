@@ -5,28 +5,28 @@ const Booking = sequelize.define("Booking", {
   serviceId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: { model: "Services", key: "id" }, // Explicit FK reference
+    references: { model: "Services", key: "id" },
   },
   stylistId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: { model: "Stylists", key: "id" }, // Explicit FK reference
+    references: { model: "Stylists", key: "id" },
   },
   userId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: { model: "Users", key: "id" }, // Explicit FK reference
+    references: { model: "Users", key: "id" }, 
   },
   date: {
-    type: DataTypes.DATEONLY, // Changed from STRING to DATEONLY
+    type: DataTypes.DATEONLY,
     allowNull: false,
   },
   time: {
-    type: DataTypes.TIME, // Changed from STRING to TIME
+    type: DataTypes.TIME,
     allowNull: false,
   },
   paymentStatus: {
-    type: DataTypes.ENUM("pending", "paid", "failed"),
+    type: DataTypes.ENUM("pending", "paid", "failed", 'refunded'),
     defaultValue: "pending",
   },
   orderId: {

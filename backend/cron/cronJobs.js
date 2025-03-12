@@ -3,7 +3,6 @@ const moment = require("moment-timezone");
 const { Booking, Service, User }  = require("../models");
 const { sendEmail } = require("../cron/sendEmail");
 
-// Convert current date to IST and format as YYYY-MM-DD
 const getTodayDateInIST = () => {
   return moment().tz("Asia/Kolkata").format("YYYY-MM-DD");
 };
@@ -12,7 +11,6 @@ cron.schedule("0 7 * * *", async () => {
   try {
     const today = getTodayDateInIST();
 
-    // Fetch today's bookings with user & service details
     const upcomingBookings = await Booking.findAll({
       where: { date: today },
       include: [
@@ -26,7 +24,6 @@ cron.schedule("0 7 * * *", async () => {
       return;
     }
 
-    // Send reminder emails
     upcomingBookings.forEach((booking) => {
       const email = booking?.User?.dataValues?.email
       const serviceName = booking?.Service?.dataValues?.name

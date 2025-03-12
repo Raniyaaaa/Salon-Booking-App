@@ -21,7 +21,7 @@ const FullServices = () => {
   const handleBookService = (service) => {
     console.log(`Booking service: ${service.name}`);
     navigate(`/dashboard/services/${service.id}`);
-    // Implement booking functionality
+
   };
 
   return (

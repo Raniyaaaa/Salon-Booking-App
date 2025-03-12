@@ -18,15 +18,13 @@ const serviceSlice = createSlice({
     },
     addService: (state, action) => {
         state.services.push(action.payload);
-      
-        // ✅ Update filtered services if needed
+
         if (state.filteredServices.length === 0 || state.filteredServices[0]?.category === action.payload.category) {
           state.filteredServices.push(action.payload);
         }
-      
-        // ✅ Ensure the category list updates correctly
+
         if (!state.categories.includes(action.payload.category)) {
-          state.categories.push(action.payload.category); // Fix: push category name, not entire object
+          state.categories.push(action.payload.category);
         }
     },
     updateService: (state, action) => {
@@ -35,19 +33,16 @@ const serviceSlice = createSlice({
         if (index !== -1) {
           const oldCategory = state.services[index].category;
           state.services[index] = action.payload;
-      
-          // ✅ Update `filteredServices`
+
           const filteredIndex = state.filteredServices.findIndex((s) => s.id === action.payload.id);
           if (filteredIndex !== -1) {
             state.filteredServices[filteredIndex] = action.payload;
           }
-      
-          // ✅ Ensure new category is added
+
           if (!state.categories.includes(action.payload.category)) {
             state.categories.push(action.payload.category);
           }
-      
-          // ✅ Remove old category if it's empty
+
           const isOldCategoryStillUsed = state.services.some((s) => s.category === oldCategory);
           if (!isOldCategoryStillUsed) {
             state.categories = state.categories.filter((cat) => cat !== oldCategory);
@@ -75,7 +70,6 @@ const serviceSlice = createSlice({
   },
 });
 
-// Action creators for async operations
 export const fetchServices = () => async (dispatch) => {
   try {
     const response = await axios.get(URL);

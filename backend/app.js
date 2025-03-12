@@ -29,18 +29,18 @@ app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
 app.use('/services', serviceRoutes);
 app.use('/stylists', stylistRoutes);
-app.use('/bookings', bookingRoutes);
+app.use('/booking', bookingRoutes);
 app.use('/payment', paymentRoutes);
 app.use('/review', reviewRoutes);
 app.use('/notification', notificationRoutes);
 app.use('/admin', adminRoutes);
 app.use('/stylistslot', stylistSlotRoutes);
 
-// Sync database and start the server
+
 sequelize.sync()
   .then(() => {
     console.log('Database connected successfully');
-    // Start the server after successful DB connection
+
     const PORT = process.env.PORT;
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);

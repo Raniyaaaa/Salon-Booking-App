@@ -38,7 +38,7 @@ const adminSlice = createSlice({
 export const { setUsers, setAppointments, removeUser, setLoading, setError } = adminSlice.actions;
 export default adminSlice.reducer;
 
-// Async functions with dispatch
+
 export const fetchUsers = () => async (dispatch) => {
     try {
         dispatch(setLoading(true));

@@ -16,10 +16,10 @@ const Review = sequelize.define(
     rating: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: { min: 1, max: 5 }, // Enforcing rating range (1-5)
+      validate: { min: 1, max: 5 },
     },
     comment: {
-      type: DataTypes.TEXT, // Allow longer reviews
+      type: DataTypes.TEXT,
       allowNull: true,
     },
   },

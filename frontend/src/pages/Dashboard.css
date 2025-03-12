@@ -1,17 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
 
 .main-heading {
-    font-family: 'Playfair Display', serif; /* Elegant and modest */
-    font-size: 6rem; /* Adjust size */
-    font-weight: 600; /* Slightly bold but not too heavy */
-    color: #664d65; /* Main text color */
-    text-align: center; /* Center the text */
-    
-    /* Perfect Shadow */
+    font-size: 8rem;
+    font-weight: 550;
+    color: #664d65;
+    text-align: center;
     text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
   }
-  
-  /* Hero Section */
+
   .hero {
     display: flex;
     align-items: center;
@@ -23,13 +18,11 @@
     background: rgba(174, 130, 176, 0.4);
   }
   
-  /* Hero Content */
   .hero-content {
-
     padding: 20px;
-    color: white; /* Ensures text visibility */
+    color: white;
     text-align: center;
-    border-radius: 10px; /* Adds smooth corners */
+    border-radius: 10px;
     max-width: 80%;
     
   }
@@ -49,14 +42,25 @@
     background: #d4d9d6;
   }
   
-  /* Services Section */
   .services {
     padding: 50px;
   }
   
+  .salon-description {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #444;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+
+  }
+
   .about-container {
     display: flex;
-    flex-wrap: wrap; /* Ensures responsiveness */
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     max-width: 80%;
@@ -83,28 +87,7 @@
     max-width: 400px;
     border-radius: 10px;
   }
-  
-  /* Stylists Section */
-  .stylists {
-    padding: 50px;
-  }
-  
-  .stylist-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .stylist-card {
-    text-align: center;
-  }
-  
-  .stylist-card img {
-    width: 100px;
-    border-radius: 50%;
-  }
-  
-  /* Testimonials */
+
   .testimonials {
     padding: 50px;
     background: #111;
@@ -116,34 +99,28 @@
     margin-bottom: 20px;
     border-radius: 10px;
 
-    overflow-x: auto; /* ✅ Scroll only when needed */
-    white-space: nowrap; /* ✅ Prevent wrapping */
-    scroll-behavior: smooth; /* ✅ Smooth scrolling */
-
-    /* ✅ Ensures the list stays centered */
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth;
     justify-content: flex-start;
 }
 
-/* ✅ Keeps list centered while allowing scrolling */
 .category-list-wrapper {
     display: flex;
     justify-content: center;
     width: 100%;
-    overflow: hidden; /* Prevents horizontal overflow */
+    overflow: hidden;
 }
 
-/* ✅ Hide scrollbar by default */
 .category-list::-webkit-scrollbar {
     height: 8px;
     display: none;
 }
 
-/* ✅ Show scrollbar when hovering */
 .category-list:hover::-webkit-scrollbar {
     display: block;
 }
 
-/* ✅ Nice scrollbar styling */
 .category-list::-webkit-scrollbar-thumb {
     background-color: #888;
     border-radius: 10px;
@@ -153,8 +130,6 @@
     background-color: #555;
 }
 
-
-/* ✅ Prevent category buttons from shrinking */
 .category-button {
     flex-shrink: 0;
     padding: 8px 16px;
@@ -197,24 +172,21 @@
   background-color: #555;
 }
 
-/* 📌 Table Container */
 .table-container {
   display: flex;
-  justify-content: center; /* ✅ Centers table horizontally */
-  align-items: center; /* ✅ Centers table vertically (if needed) */
+  justify-content: center;
+  align-items: center;
   width: 100%;
   padding: 20px 0;
 }
 
-/* 📌 Table Styling */
 table {
   width: 70%;
   border-collapse: collapse;
-  table-layout: fixed; /* ✅ Fix column widths */
-  margin: auto; /* ✅ Ensures table stays centered */
+  table-layout: fixed;
+  margin: auto;
 }
 
-/* 📌 Table Header Styling */
 th {
   color: #555;
   border-bottom: 1px solid #444;
@@ -223,40 +195,37 @@ th {
   text-align: center;
 }
 
-/* 📌 Table Row Styling */
 td {
   padding: 12px;
-  text-align: center; /* ✅ Center content */
+  text-align: center;
   border-bottom: 1px solid #444;
-  white-space: nowrap; /* ✅ Prevents wrapping */
-  overflow: hidden; /* ✅ Hides overflowing text */
-  text-overflow: ellipsis; /* ✅ Adds "..." if text is too long */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* 📌 Ensure fixed width for specific columns */
 th:nth-child(1),
 td:nth-child(1) {
-  width: 40%; /* ✅ Service Name */
+  width: 40%;
 }
 
 th:nth-child(2),
 td:nth-child(2) {
-  width: 20%; /* ✅ Price */
+  width: 20%;
 }
 
 th:nth-child(3),
 td:nth-child(3) {
-  width: 20%; /* ✅ Action */
+  width: 20%;
 }
 
-/* 📌 Responsive Table for Smaller Screens */
 @media (max-width: 768px) {
   .table-container {
-    padding: 10px; /* ✅ Adjust padding */
+    padding: 10px;
   }
 
   table {
-    width: 95%; /* ✅ More flexible for small screens */
+    width: 95%;
   }
 
   th, td {

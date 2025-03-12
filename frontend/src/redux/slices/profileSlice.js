@@ -23,7 +23,6 @@ const profileSlice = createSlice({
 export const { setUser, setLoading, setError } = profileSlice.actions;
 export default profileSlice.reducer;
 
-// Async functions with dispatch
 export const getProfile = () => async (dispatch) => {
     try {
         dispatch(setLoading(true));

@@ -1,12 +1,11 @@
 const { Booking, Service, StylistSlot }  = require("../models");
 const axios = require("axios");
 
-const CASHFREE_API_BASE = "https://sandbox.cashfree.com/pg"; // Change for production
+const CASHFREE_API_BASE = "https://sandbox.cashfree.com/pg";
 
-// Helper function to convert 12-hour format to 24-hour format
 const convertTo24HourFormat = (time12h) => {
   const match = time12h.match(/(\d+):(\d+) (\w{2})/);
-  if (!match) return null; // Handle invalid time format
+  if (!match) return null;
 
   let [_, hour, minute, period] = match;
   hour = parseInt(hour);
@@ -21,7 +20,6 @@ const convertTo24HourFormat = (time12h) => {
   return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
 };
 
-// Create a new Booking & Initiate Payment
 exports.createPayment = async (req, res) => {
   try {
     const { serviceId, stylistId, userId, date, time, amount, customerEmail, customerPhone } = req.body;
@@ -29,7 +27,7 @@ exports.createPayment = async (req, res) => {
     console.log("Request Body:", req.body);
     
     const orderId = `order_${Date.now()}`;
-    const formattedTime = convertTo24HourFormat(time) || time; // Convert time if necessary
+    const formattedTime = convertTo24HourFormat(time) || time;
     
     const paymentResponse = await axios.post(
       `${CASHFREE_API_BASE}/orders`,
@@ -66,7 +64,7 @@ exports.createPayment = async (req, res) => {
       stylistId,
       userId,
       date,
-      time: formattedTime, // Store in 24-hour format
+      time: formattedTime,
       paymentStatus: "pending",
       orderId,
       statusOfBooking: "scheduled",
@@ -82,7 +80,7 @@ exports.createPayment = async (req, res) => {
   }
 };
 
-// Verify Payment and Update Booking
+
 exports.verifyPayment = async (req, res) => {
   try {
     const { orderId } = req.body;
@@ -101,10 +99,10 @@ exports.verifyPayment = async (req, res) => {
       }
     );
 
-    const paymentStatus = paymentStatusResponse.data.order_status; // 'PAID', 'FAILED', 'PENDING'
+    const paymentStatus = paymentStatusResponse.data.order_status;
 
     if (paymentStatus === "PAID") {
-      await booking.update({ paymentStatus: "paid", statusOfBooking: "scheduled" });
+      await booking.update({ paymentStatus: "paid" });
 
       const service = await Service.findOne({ where: { id: booking.serviceId } });
       if (!service) return res.status(400).json({ success: false, message: "Service not found" });

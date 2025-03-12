@@ -19,7 +19,7 @@ const stylistSlice = createSlice({
     addStylist(state, action) {
       state.stylists.push(action.payload);
     },
-    updateStylistReducer(state, action) { // 🔹 Renamed to avoid conflict
+    updateStylistReducer(state, action) { 
       const index = state.stylists.findIndex((s) => s.id === action.payload.id);
       if (index !== -1) state.stylists[index] = action.payload;
     },
@@ -35,7 +35,6 @@ const stylistSlice = createSlice({
   },
 });
 
-// 🔹 Fetch all stylists
 export const fetchStylists = () => async (dispatch) => {
   dispatch(setLoading(true));
   try {
@@ -49,7 +48,7 @@ export const fetchStylists = () => async (dispatch) => {
   }
 };
 
-// 🔹 Add a new stylist
+
 export const addNewStylist = (stylistData) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
@@ -62,14 +61,14 @@ export const addNewStylist = (stylistData) => async (dispatch) => {
   }
 };
 
-// 🔹 Update stylist (for updating availability, name, image, etc.)
+
 export const updateStylist = (stylistData) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
     console.log(stylistData);
     const response = await axios.put(`${URL}/${stylistData.id}`, stylistData);
     console.log(response)
-    dispatch(updateStylistReducer(response.data)); // 🔹 Updated to match renamed reducer
+    dispatch(updateStylistReducer(response.data));
   } catch (error) {
     dispatch(setError(error.response?.data?.message || error.message));
   } finally {
@@ -77,7 +76,6 @@ export const updateStylist = (stylistData) => async (dispatch) => {
   }
 };
 
-// 🔹 Delete a stylist
 export const deleteStylist = (id) => async (dispatch) => {
   dispatch(setLoading(true));
   try {

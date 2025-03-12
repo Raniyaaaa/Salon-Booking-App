@@ -101,7 +101,6 @@ const ManageServices = () => {
         </div>
       )}
 
-      {/* Category Selection */}
       <div className='category-list-wrapper'>
         <div className="category-list">
           <button 
@@ -121,7 +120,6 @@ const ManageServices = () => {
           ))}
         </div>
       </div>
-      {/* Form Section */}
       {formVisible && (
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
@@ -157,7 +155,6 @@ const ManageServices = () => {
         </form>
       )}
 
-      {/* Services List */}
       <div className="service-list">
         <h3>Existing Services</h3>
         <ul className="service-grid">
@@ -169,10 +166,10 @@ const ManageServices = () => {
                 </div>
 
                 <div className="service-details">
-                  <h3>{service.name}</h3> {/* ✅ Ensure name is a string */}
-                  <p>{service.description}</p> {/* ✅ Ensure description is a string */}
-                  <p>Price: Rs.{service.price}</p> {/* ✅ Ensure price is a string */}
-                  <p>Duration: {service.duration} minutes</p> {/* ✅ Ensure duration is a string */}
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
+                  <p>Price: Rs.{service.price}</p>
+                  <p>Duration: {service.duration} minutes</p>
 
                   <div className="service-actions">
                     <button onClick={() => handleEdit(service)} className="service-button edit">
@@ -186,7 +183,7 @@ const ManageServices = () => {
               </li>
             ))
           ) : (
-            <p>No services found.</p> // ✅ Handles empty list
+            <p>No services found.</p>
           )}
         </ul>
       </div>

@@ -9,46 +9,64 @@ const bookingSlice = createSlice({
   reducers: {
     setAppointments: (state, action) => {
       state.appointments = action.payload;
-      state.error = null;
     },
     addAppointment: (state, action) => {
       state.appointments.push(action.payload);
       state.error = null;
+    },
+    cancelAppointment: (state, action) => {
+      state.appointments = state.appointments.filter(
+        (appointment) => appointment.id !== action.payload
+      );
     },
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
     setError: (state, action) => {
       state.error = action.payload;
+      state.loading = false;
     },
   },
 });
 
-export const { setAppointments, addAppointment, setLoading, setError } = bookingSlice.actions;
+export const {
+  setAppointments,
+  addAppointment,
+  cancelAppointment,
+  setLoading,
+  setError,
+} = bookingSlice.actions;
+
 export default bookingSlice.reducer;
 
-export const bookAppointment = (bookingData) => async (dispatch) => {
+
+export const getAppointments = (token) => async (dispatch) => {
   try {
-    dispatch(setLoading(true));
-    const response = await axios.post(`${API_URL}/booking`, bookingData);
-    dispatch(addAppointment(response.data));
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+    
+    console.log(config)
+    console.log(token);
+    const response = await axios.get(`${API_URL}/mybookings`, config);
+    console.log(response)
+    dispatch(setAppointments(response.data));
+    console.log(response.data)
   } catch (error) {
-    dispatch(setError(error.response?.data || "Booking failed"));
+    dispatch(setError(error.response?.data || "Failed to fetch appointments"));
   } finally {
     dispatch(setLoading(false));
   }
 };
 
-export const getAppointments = () => async (dispatch) => {
-    try {
-        dispatch(setLoading(true));
-        const token = localStorage.getItem("token");
-        const config = { headers: { Authorization: `Bearer ${token}` } };
-        const response = await axios.get(`${API_URL}/mybookings`, config);
-        dispatch(setAppointments(response.data));
-    } catch (error) {
-        dispatch(setError(error.response?.data || "Failed to fetch appointments"));
-    } finally {
-        dispatch(setLoading(false));
-    }
+
+export const cancelUserAppointment = (appointmentId) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    console.log(appointmentId)
+    await axios.delete(`${API_URL}/${appointmentId}`);
+    dispatch(cancelAppointment(appointmentId));
+  } catch (error) {
+    dispatch(setError(error.response?.data || "Failed to cancel appointment"));
+  } finally {
+    dispatch(setLoading(false));
+  }
 };
